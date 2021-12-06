@@ -1,4 +1,4 @@
-package com.chords.chordsquare;
+package com.chords.chordsquare.music;
 
 public enum NoteValue {
     C,D,E,F,G,A,B;

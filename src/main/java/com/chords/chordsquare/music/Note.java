@@ -1,9 +1,13 @@
-package com.chords.chordsquare;
+package com.chords.chordsquare.music;
 
 public class Note {
     private boolean altered;
     private NoteValue noteValue;
     private Alteration alteration;
+
+    public Note(){
+
+    }
 
     public Note(String noteAsString){
         if(noteAsString == null){

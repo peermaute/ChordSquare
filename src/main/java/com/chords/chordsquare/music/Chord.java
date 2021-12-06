@@ -1,4 +1,4 @@
-package com.chords.chordsquare;
+package com.chords.chordsquare.music;
 
 import lombok.Data;
 
@@ -7,7 +7,9 @@ public class Chord {
 
     private String addition;
     private Note note;
-    
+    public Chord(){
+
+    }
     public Chord(String chordString){
         if(chordString == null || chordString.isEmpty()){
             throw new IllegalArgumentException("Argument must not be null or empty");

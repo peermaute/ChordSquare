@@ -1,5 +1,8 @@
 package com.chords.chordsquare;
 
+import com.chords.chordsquare.music.Alteration;
+import com.chords.chordsquare.music.Note;
+import com.chords.chordsquare.music.NoteValue;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
