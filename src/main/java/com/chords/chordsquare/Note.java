@@ -27,7 +27,42 @@ public class Note {
     //lowerKey(): when not altered, just alter unless it's c or f
     //higherKey(): when altered, just deAlter
     //lowerKey(): when altered, just deAlter
-
+    public void higherKey(){
+        if(altered){
+            if(alteration == Alteration.SHARP){
+                noteValue = noteValue.next();
+            }
+           altered = false;
+           alteration = Alteration.NONE;
+        }
+        else{
+            if(noteValue == NoteValue.E || noteValue == NoteValue.B){
+                noteValue = noteValue.next();
+            }
+            else{
+                altered = true;
+                alteration = Alteration.SHARP;
+            }
+        }
+    }
+    public void lowerKey(){
+        if(altered){
+            if(alteration == Alteration.FLAT){
+                noteValue = noteValue.previous();
+            }
+            altered = false;
+            alteration = Alteration.NONE;
+        }
+        else{
+            if(noteValue == NoteValue.C || noteValue == NoteValue.F){
+                noteValue = noteValue.previous();
+            }
+            else{
+                altered = true;
+                alteration = Alteration.FLAT;
+            }
+        }
+    }
     /**
      * Corrects a possible Note Cb, Fb, E# or B# to B, E, F or C
      */

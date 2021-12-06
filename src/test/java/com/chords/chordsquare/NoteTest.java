@@ -3,15 +3,20 @@ package com.chords.chordsquare;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class NoteTest {
+    //CONSTRUCTOR TESTS
     @Test
     void testConstructorUnalteredNote(){
         Note note = new Note("C");
         assertEquals("C", note.toString());
+    }
+    @Test
+    void testConstructorGermanB(){
+        Note note = new Note("H");
+        assertEquals("B", note.toString());
     }
     @Test
     void testConstructorAlteredNoteSharp(){
@@ -46,5 +51,71 @@ public class NoteTest {
     void testConstructorAlteredNoteSpecialCaseESharp(){
         Note note = new Note("E#");
         assertEquals("F", note.toString());
+    }
+    //TRANSPOSE TESTS
+    @Test
+    void testHigherKeyUnalteredNote(){
+        Note note = new Note("D");
+        note.higherKey();
+        assertTrue(note.getNoteValue() == NoteValue.D);
+        assertTrue(note.getAlteration() == Alteration.SHARP);
+        assertTrue(note.isAltered());
+    }
+    @Test
+    void testHigherKeyUnalteredNoteE(){
+        Note note = new Note("E");
+        note.higherKey();
+        assertTrue(note.getNoteValue() == NoteValue.F);
+        assertTrue(note.getAlteration() == Alteration.NONE);
+        assertTrue(!note.isAltered());
+    }
+    @Test
+    void testHigherKeyAlteredNoteSharp(){
+        Note note = new Note("C#");
+        note.higherKey();
+        assertTrue(note.getNoteValue() == NoteValue.D);
+        assertTrue(note.getAlteration() == Alteration.NONE);
+        assertTrue(!note.isAltered());
+    }
+    @Test
+    void testHigherKeyAlteredNoteFlat(){
+        Note note = new Note("Bb");
+        note.higherKey();
+        assertTrue(note.getNoteValue() == NoteValue.B);
+        assertTrue(note.getAlteration() == Alteration.NONE);
+        assertFalse(note.isAltered());
+    }
+
+    @Test
+    void testLowerKeyUnalteredNote(){
+        Note note = new Note("D");
+        note.lowerKey();
+        assertTrue(note.getNoteValue() == NoteValue.D);
+        assertTrue(note.getAlteration() == Alteration.FLAT);
+        assertTrue(note.isAltered());
+    }
+    @Test
+    void testLowerKeyUnalteredNoteF(){
+        Note note = new Note("F");
+        note.lowerKey();
+        assertTrue(note.getNoteValue() == NoteValue.E);
+        assertTrue(note.getAlteration() == Alteration.NONE);
+        assertFalse(note.isAltered());
+    }
+    @Test
+    void testLowerKeyAlteredNoteSharp(){
+        Note note = new Note("C#");
+        note.lowerKey();
+        assertTrue(note.getNoteValue() == NoteValue.C);
+        assertTrue(note.getAlteration() == Alteration.NONE);
+        assertFalse(note.isAltered());
+    }
+    @Test
+    void testLowerKeyAlteredNoteFlat(){
+        Note note = new Note("Bb");
+        note.lowerKey();
+        assertTrue(note.getNoteValue() == NoteValue.A);
+        assertTrue(note.getAlteration() == Alteration.NONE);
+        assertFalse(note.isAltered());
     }
 }
