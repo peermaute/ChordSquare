@@ -40,3 +40,4 @@ out/
 
 **/resources/application.properties
 **/resources/app2.properties
+**/resources/test.config

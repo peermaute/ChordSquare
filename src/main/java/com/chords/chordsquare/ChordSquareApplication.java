@@ -16,8 +16,6 @@ public class ChordSquareApplication implements CommandLineRunner {
     @Autowired
     SongRepository songRepository;
 
-    @Value("#{systemEnvironment['MONGO_URL_SECRET'] ?: '**Did not work**'}")
-    private String envVar;
 
     public static void main(String[] args) {
         SpringApplication.run(ChordSquareApplication.class, args);
@@ -92,8 +90,5 @@ public class ChordSquareApplication implements CommandLineRunner {
        Optional<Song> optSong = songRepository.findById("61ae7463044c2c7ee4545e21");
        optSong.get().higherKey();
        //System.out.println(optSong);
-        System.out.println("**************");
-        System.out.println(envVar);
-        System.out.println("**************");
     }
 }
