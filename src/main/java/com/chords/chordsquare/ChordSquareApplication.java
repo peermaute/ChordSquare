@@ -89,6 +89,6 @@ public class ChordSquareApplication implements CommandLineRunner {
         //songRepository.save(song);
        Optional<Song> optSong = songRepository.findById("61ae7463044c2c7ee4545e21");
        optSong.get().higherKey();
-       //System.out.println(optSong);
+       System.out.println(optSong);
     }
 }

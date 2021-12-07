@@ -57,35 +57,59 @@ public class Song {
     }
     @Override
     public String toString(){
-        //TODO: Not quite working - look at TextConverterTest for an example
+        //TODO: Implement index and position of chord
         String returnVal = "";
         for(ArrayList<ChordWordPair> curStave: staveList){
             String firstLine = "";
             String secondLine = "";
             for(ChordWordPair pair: curStave){
                 if(pair.getChord() == null || pair.getChord().toString().isEmpty()){
+                    if(!firstLine.isEmpty()){
+                        firstLine += " ";
+                    }
                     for(int i = 0; i < pair.getWord().length(); i++){
                         firstLine += " ";
                     }
-                    secondLine += " " + pair.getWord();
+                    if(!secondLine.isEmpty()){
+                        secondLine += " ";
+                    }
+                    secondLine += pair.getWord();
                 }
                 else if(pair.getChord().toString().length() < pair.getWord().length()){
-                    firstLine += " " + pair.getChord().toString();
+                    if(!firstLine.isEmpty()){
+                        firstLine += " ";
+                    }
+                    firstLine += pair.getChord().toString();
                     for(int i = pair.getChord().toString().length(); i < pair.getWord().length(); i++){
                         firstLine += " ";
                     }
-                    secondLine += " " + pair.getWord();
+                    if(!secondLine.isEmpty()){
+                        secondLine += " ";
+                    }
+                    secondLine += pair.getWord();
                 }
                 else if(pair.getChord().toString().length() > pair.getWord().length()){
-                    firstLine += " " + pair.getChord().toString();
-                    secondLine += " " + pair.getWord();
+                    if(!firstLine.isEmpty()){
+                        firstLine += " ";
+                    }
+                    firstLine += pair.getChord().toString();
+                    if(!secondLine.isEmpty()){
+                        secondLine += " ";
+                    }
+                    secondLine += pair.getWord();
                     for(int i = pair.getWord().length(); i < pair.getChord().toString().length(); i++){
                         secondLine += " ";
                     }
                 }
                 else if(pair.getChord().toString().length() == pair.getWord().length()){
-                    firstLine += " " + pair.getChord().toString();
-                    secondLine += " " + pair.getWord();
+                    if(!firstLine.isEmpty()){
+                        firstLine += " ";
+                    }
+                    if(!secondLine.isEmpty()){
+                        secondLine += " ";
+                    }
+                    firstLine += pair.getChord().toString();
+                    secondLine += pair.getWord();
                 }
             }
             returnVal += "\n" + firstLine;
