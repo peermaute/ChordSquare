@@ -36,8 +36,3 @@ out/
 ### VS Code ###
 .vscode/
 
-
-
-**/resources/application.properties
-**/resources/app2.properties
-**/resources/test.config

@@ -3,6 +3,7 @@ package com.chords.chordsquare;
 import com.chords.chordsquare.music.Chord;
 import com.chords.chordsquare.structure.ChordWordPair;
 import com.chords.chordsquare.structure.Position;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ import java.util.ArrayList;
  *
  * If you want a chord to be above the word at index 0 you can also jsut write the chord symbol
  */
+@Service
 public class TextConverter {
     public Song textToSong(String text){
         Song song = new Song();

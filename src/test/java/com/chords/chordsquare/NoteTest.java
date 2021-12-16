@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 public class NoteTest {
     //CONSTRUCTOR TESTS
+
     @Test
     void testConstructorUnalteredNote(){
         Note note = new Note("C");
