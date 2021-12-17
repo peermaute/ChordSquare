@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class TestMongoDB {
@@ -15,13 +14,11 @@ public class TestMongoDB {
     @Test
     void testCreateAndDeleteSong(){
         Song song = new Song();
-        song.setId("123");
-        String id = song.getId();
-        assertFalse(songRepository.findById(id).isPresent());
+        assertNull(song.getId());
         songRepository.save(song);
-        assertTrue(songRepository.findById(id).isPresent());
+        assertTrue(songRepository.findById(song.getId()).isPresent());
         songRepository.delete(song);
-        assertFalse(songRepository.findById(id).isPresent());
+        assertFalse(songRepository.findById(song.getId()).isPresent());
     }
 
 }
