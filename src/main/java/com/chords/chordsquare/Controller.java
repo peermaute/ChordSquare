@@ -2,12 +2,11 @@ package com.chords.chordsquare;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 @RestController
@@ -34,5 +33,40 @@ public class Controller {
             return new ResponseEntity<>("Deletion successful", HttpStatus.OK);
         }
         return new ResponseEntity<>("Deletion failed, check logs", HttpStatus.BAD_REQUEST);
+    }
+    @PutMapping(path = "/songs/update")
+    public ResponseEntity<String> updateSong(@RequestBody Song song){
+        if(songService.updateSong(song)){
+            return new ResponseEntity<>("Update successful", HttpStatus.OK);
+        }
+        return new ResponseEntity<>("Update failed, check logs", HttpStatus.BAD_REQUEST);
+    }
+    @GetMapping(path = "/songs", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<?> getSongs(){
+        ArrayList<Song> songList = songService.getAllSongs();
+        if(songList != null){
+            return new ResponseEntity<>(songList, HttpStatus.OK);
+        }
+        return new ResponseEntity<>("GET Request failed, check logs", HttpStatus.BAD_REQUEST);
+    }
+    @GetMapping(path = "songs/{songId}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<?> getSong(@PathVariable String songId){
+        try{
+            return new ResponseEntity<>(songService.getSong(songId), HttpStatus.OK);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>("GET Request failed, check logs", HttpStatus.BAD_REQUEST);
+        }
+    }
+    @GetMapping(path = "songs/name", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<?> getSongsByName(@RequestBody String name){
+        try{
+            return new ResponseEntity<>(songService.getSongsByName(name), HttpStatus.OK);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>("GET Request failed, check logs", HttpStatus.BAD_REQUEST);
+        }
     }
 }
