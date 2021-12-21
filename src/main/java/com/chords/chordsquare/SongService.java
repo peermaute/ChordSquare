@@ -22,7 +22,7 @@ public class SongService {
             throw new IllegalArgumentException("Argument must not be null");
         }
         if (map.get("text") == null && map.get("name") == null) {
-            System.out.println("POST Request FAILED: Either text or name has to be set");
+            System.out.println(System.currentTimeMillis() + "   " +  "POST Request FAILED: Either text or name has to be set");
             return false;
         }
         Song song = new Song();
@@ -34,10 +34,10 @@ public class SongService {
         }
         songRepository.save(song);
         if(songRepository.findById(song.getId()).isPresent()){
-            System.out.println("POST Request successful: Song created");
+            System.out.println(System.currentTimeMillis() + "   " +  "POST Request successful: Song created");
             return true;
         }
-        System.out.println("POST Request FAILED");
+        System.out.println(System.currentTimeMillis() + "   " +  "POST Request FAILED");
         return false;
     }
     public boolean deleteSong(String songId){
@@ -45,12 +45,12 @@ public class SongService {
             throw new IllegalArgumentException("songId must not be null");
         }
         if(!songRepository.findById(songId).isPresent()){
-            System.out.println("DELETE Request FAILED: No song with the given songId in the repository");
+            System.out.println(System.currentTimeMillis() + "   " +  "DELETE Request FAILED: No song with the given songId in the repository");
             return false;
         }
         songRepository.delete(songRepository.findById(songId).get());
         if(songRepository.findById(songId).isPresent()){
-            System.out.println("DELETE Request FAILED");
+            System.out.println(System.currentTimeMillis() + "   " +  "DELETE Request FAILED");
             return false;
         }
         return true;
@@ -63,7 +63,7 @@ public class SongService {
             throw new IllegalArgumentException("Song ID must not be null");
         }
         if(!songRepository.findById(song.getId()).isPresent()){
-            System.out.println("PUT Request FAILED: No song with the given songId in the repository");
+            System.out.println(System.currentTimeMillis() + "   " +  "PUT Request FAILED: No song with the given songId in the repository");
             return false;
         }
         Song updSong = songRepository.findById(song.getId()).get();
@@ -77,22 +77,22 @@ public class SongService {
             songRepository.save(updSong);
         }
         catch (Exception e){
-            System.out.println("PUT Request FAILED");
+            System.out.println(System.currentTimeMillis() + "   " +  "PUT Request FAILED");
             e.printStackTrace();
             return false;
         }
-        System.out.println("PUT Request SUCCESSFUL: Song " + updSong.getId() + " updated");
+        System.out.println(System.currentTimeMillis() + "   " +  "PUT Request SUCCESSFUL: Song " + updSong.getId() + " updated");
         return true;
     }
     public ArrayList<Song> getAllSongs(){
         try{
             ArrayList<Song> songList = new ArrayList<>();
             songList.addAll(songRepository.findAll());
-            System.out.println("GET Request successful");
+            System.out.println(System.currentTimeMillis() + "   " +  "GET Request successful");
             return songList;
         }
         catch (Exception e){
-            System.out.println("GET Request FAILED");
+            System.out.println(System.currentTimeMillis() + "   " +  "GET Request FAILED");
             throw e;
         }
     }
@@ -101,11 +101,11 @@ public class SongService {
             throw new IllegalArgumentException("songId must not be null");
         }
         if(!songRepository.findById(songId).isPresent()){
-            System.out.println("GET Request FAILED: No song with the given songId in the repository");
+            System.out.println(System.currentTimeMillis() + "   " +  "GET Request FAILED: No song with the given songId in the repository");
             throw new IllegalArgumentException("No song with the given songId in the repository");
         }
         Song song = songRepository.findById(songId).get();
-        System.out.println("GET Request successful");
+        System.out.println(System.currentTimeMillis() + "   " +  "GET Request successful");
         return song;
     }
     public ArrayList<Song> getSongsByName(String name){
@@ -115,11 +115,11 @@ public class SongService {
         try{
             ArrayList<Song> songList = new ArrayList<>();
             songList.addAll(songRepository.findByName(name));
-            System.out.println("GET Request successful");
+            System.out.println(System.currentTimeMillis() + "   " +  "GET Request successful");
             return songList;
         }
         catch (Exception e){
-            System.out.println("GET Request FAILED");
+            System.out.println(System.currentTimeMillis() + "   " +  "GET Request FAILED");
             throw e;
         }
     }

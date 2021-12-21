@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Map;
-
+//TODO: Block requests with wrong format (f.e. get request to put mapping)
+@CrossOrigin("*")
 @RestController
 public class Controller {
     @Autowired

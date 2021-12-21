@@ -58,6 +58,7 @@ public class Song {
     @Override
     public String toString(){
         //TODO: Implement index and position of chord
+        //TODO: Maybe implement toString in ChordWordPair and a private toString method for a single stave
         String returnVal = "";
         for(ArrayList<ChordWordPair> curStave: staveList){
             String firstLine = "";

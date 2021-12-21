@@ -23,7 +23,10 @@ public class ChordSquareApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        //songRepository.deleteAll();
+
+    }
+    private void initiate(){
+
 
         Song song = new Song();
         song.setName("Happy Birthday");
@@ -77,20 +80,20 @@ public class ChordSquareApplication implements CommandLineRunner {
 
         //Should be D# major
         song.higherKey();
-       // System.out.println(song);
+        // System.out.println(song);
 
         //Should be B major
         song.lowerKey();
         song.lowerKey();
         song.lowerKey();
         song.lowerKey();
-       // System.out.println(song);
+        // System.out.println(song);
 
         //songRepository.save(song);
-       Optional<Song> optSong = songRepository.findById("61ae7463044c2c7ee4545e21");
-       optSong.get().higherKey();
-       optSong.get().higherKey();
-       optSong.get().higherKey();
-       System.out.println(optSong);
+        Optional<Song> optSong = songRepository.findById("61ae7463044c2c7ee4545e21");
+        optSong.get().higherKey();
+        optSong.get().higherKey();
+        optSong.get().higherKey();
+        System.out.println(optSong);
     }
 }
