@@ -16,6 +16,8 @@ public class Song {
 
     String name;
 
+    String text;
+
     ArrayList<ArrayList<ChordWordPair>> staveList;
     public Song(){
         staveList = new ArrayList<>();
@@ -50,7 +52,7 @@ public class Song {
             return false;
         }
         Song song = (Song) obj;
-        if(song.getId() == this.getId()){
+        if(song.getId().equals(this.getId())){
             return true;
         }
         return false;
@@ -58,7 +60,7 @@ public class Song {
     @Override
     public String toString(){
         //TODO: Implement index and position of chord
-        //TODO: Maybe implement toString in ChordWordPair and a private toString method for a single stave
+        //TODO: Maybe implement a private toString method for a single stave for clarity
         String returnVal = "";
         for(ArrayList<ChordWordPair> curStave: staveList){
             String firstLine = "";

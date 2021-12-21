@@ -19,6 +19,9 @@ public class TestSongService {
     @Autowired
     SongService songService;
 
+    @Autowired
+    TextConverter textConverter;
+
     @Test
     void testNewSong(){
         Map<String, String> map = new HashMap<>();
@@ -57,22 +60,25 @@ public class TestSongService {
     }
     @Test
     void testGetSong(){
-        Song song = new Song();
+        String text = "This is a test text";
+        Song song = textConverter.textToSong(text);
         songRepository.save(song);
         assertTrue(songRepository.findById(song.getId()).isPresent());
         assertEquals(song, songService.getSong(song.getId()));
+        assertTrue(songService.getSong(song.getId()).getText().contains(text));
         songRepository.delete(song);
         assertFalse(songRepository.findById(song.getId()).isPresent());
     }
     @Test
     void testGetSongsByName(){
-        Song song = new Song();
+        Song song = textConverter.textToSong("This is a test String");
         String name = "TestSong";
         song.setName(name);
         ArrayList<Song> list = songService.getSongsByName(name);
         songRepository.save(song);
         assertTrue(songRepository.findById(song.getId()).isPresent());
         ArrayList<Song> list2 = songService.getSongsByName(name);
+        assertTrue(list2.get(list.size()).getText().contains("This is a test String"));
         assertEquals(list.size() + 1, list2.size());
         songRepository.delete(song);
         ArrayList<Song> list3 = songService.getSongsByName(name);

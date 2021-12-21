@@ -89,6 +89,9 @@ public class SongService {
             ArrayList<Song> songList = new ArrayList<>();
             songList.addAll(songRepository.findAll());
             System.out.println(System.currentTimeMillis() + "   " +  "GET Request successful");
+            for(Song song: songList){
+                song.setText(song.toString());
+            }
             return songList;
         }
         catch (Exception e){
@@ -106,6 +109,7 @@ public class SongService {
         }
         Song song = songRepository.findById(songId).get();
         System.out.println(System.currentTimeMillis() + "   " +  "GET Request successful");
+        song.setText(song.toString());
         return song;
     }
     public ArrayList<Song> getSongsByName(String name){
@@ -116,6 +120,9 @@ public class SongService {
             ArrayList<Song> songList = new ArrayList<>();
             songList.addAll(songRepository.findByName(name));
             System.out.println(System.currentTimeMillis() + "   " +  "GET Request successful");
+            for(Song song: songList){
+                song.setText(song.toString());
+            }
             return songList;
         }
         catch (Exception e){
