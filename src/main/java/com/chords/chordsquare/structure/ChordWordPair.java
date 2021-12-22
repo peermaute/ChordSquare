@@ -61,12 +61,14 @@ public class ChordWordPair {
             line2 = word;
         }
         if(word != null && chord != null){
+            int length1 = line1.length();
+            int length2 = line2.length();
             if(position != Position.OVER){
                 if(position == Position.BEFORE){
                     for(int i = 0; i < chord.toString().length(); i++){
                         line2 = " " + line2;
                     }
-                    for(int i = 0; i < line2.length() - line1.length(); i++){
+                    for(int i = 0; i < length2 - length1; i++){
                         line1 += " ";
                     }
                 }
@@ -74,7 +76,7 @@ public class ChordWordPair {
                     for(int i = 0; i < word.length(); i++){
                         line1 = " " + line1;
                     }
-                    for(int i = 0; i < line1.length() - line2.length(); i++){
+                    for(int i = 0; i < length1 - length2; i++){
                         line2 += " ";
                     }
                 }
@@ -85,15 +87,17 @@ public class ChordWordPair {
                         line1 = " " + line1;
                     }
                 }
-                if(line1.length() > line2.length()){
-                    for(int i = 0; i < line1.length() - line2.length(); i++){
-                        line2 += " ";
-                    }
+            }
+            length1 = line1.length();
+            length2 = line2.length();
+            if(length1 > length2){
+                for(int i = 0; i < length1 - length2; i++){
+                    line2 += " ";
                 }
-                if(line2.length() > line1.length()){
-                    for(int i = 0; i < line2.length() - line1.length(); i++){
-                        line1 += " ";
-                    }
+            }
+            if(length2 > length1){
+                for(int i = 0; i < length2 - length1; i++){
+                    line1 += " ";
                 }
             }
         }
@@ -110,5 +114,11 @@ public class ChordWordPair {
         list.add(line1);
         list.add(line2);
         return list;
+    }
+    public void setIndex(int index){
+        if(index < 0){
+            throw new IllegalArgumentException("Index must not be negative");
+        }
+        this.index = index;
     }
 }

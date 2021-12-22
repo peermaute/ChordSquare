@@ -25,6 +25,7 @@ import java.util.ArrayList;
  */
 @Service
 public class TextConverter {
+    //TODO: You have to put a space or new line after each word (no comma for example) -> maybe fix?
     public Song textToSong(String text){
         Song song = new Song();
         String[] lines = text.split("\\r?\\n");

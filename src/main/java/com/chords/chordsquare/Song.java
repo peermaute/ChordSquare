@@ -59,8 +59,36 @@ public class Song {
     }
     @Override
     public String toString(){
-        //TODO: Implement index and position of chord
-        //TODO: Maybe implement a private toString method for a single stave for clarity
+        String retString = "";
+        for(int i = 0; i < staveList.size(); i++){
+            String[] staveArray = staveToStringArray(staveList.get(i));
+            if(i != 0){
+                retString += "\n";
+            }
+            retString += staveArray[0];
+            retString += "\n";
+            retString += staveArray[1];
+        }
+        return retString;
+    }
+
+    private String[] staveToStringArray(ArrayList<ChordWordPair> stave){
+        String[] retArray = new String[2];
+        retArray[0] = "";
+        retArray[1] = "";
+        for(int i = 0; i < stave.size(); i++){
+            ArrayList<String> pairString = stave.get(i).toStringList();
+            if(i != 0){
+                retArray[0] = retArray[0] + " ";
+                retArray[1] = retArray[1] + " ";
+            }
+            retArray[0] = retArray[0] + pairString.get(0);
+            retArray[1] = retArray[1] + pairString.get(1);
+        }
+        return retArray;
+    }
+
+    /*private String oldToString(){
         String returnVal = "";
         for(ArrayList<ChordWordPair> curStave: staveList){
             String firstLine = "";
@@ -119,6 +147,5 @@ public class Song {
             returnVal += "\n" + secondLine;
         }
         return returnVal;
-    }
-
+    }*/
 }
