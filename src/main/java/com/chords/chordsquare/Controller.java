@@ -60,6 +60,16 @@ public class Controller {
             return new ResponseEntity<>("GET Request failed, check logs", HttpStatus.BAD_REQUEST);
         }
     }
+    @GetMapping(path = "songs/string/{songId}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<?> getSongString(@PathVariable String songId){
+        try{
+            return new ResponseEntity<>(songService.getSong(songId).toString(), HttpStatus.OK);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>("GET Request failed, check logs", HttpStatus.BAD_REQUEST);
+        }
+    }
     @GetMapping(path = "songs/name", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<?> getSongsByName(@RequestBody String name){
         try{
