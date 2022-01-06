@@ -61,7 +61,7 @@ public class TestSongService {
     @Test
     void testGetSong(){
         String text = "This is a test text";
-        Song song = textConverter.textToSong(text);
+        Song song = textConverter.textToSongPosition(text);
         songRepository.save(song);
         assertTrue(songRepository.findById(song.getId()).isPresent());
         assertEquals(song, songService.getSong(song.getId()));
@@ -71,7 +71,7 @@ public class TestSongService {
     }
     @Test
     void testGetSongsByName(){
-        Song song = textConverter.textToSong("This is a test String");
+        Song song = textConverter.textToSongPosition("This is a test String");
         String name = "TestSong";
         song.setName(name);
         ArrayList<Song> list = songService.getSongsByName(name);

@@ -29,7 +29,8 @@ public class TextConverter {
     //TODO: You have to put a space or new line after each word (no comma for example) -> maybe fix?
     //idea: iterate over text, if text.charAt(i) == ']' && text.charAt(i+1) != ' '
     //      -> text = text.substring(0,i) + ' ' + text.substring(i)
-    public Song textToSong(String text){
+    //TODO: implement textToSongPlain()
+    public Song textToSongPosition(String text){
         Song song = new Song();
         String[] lines = text.split("\\r?\\n");
         for(String line: lines){

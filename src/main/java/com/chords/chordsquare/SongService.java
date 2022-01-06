@@ -1,8 +1,6 @@
 package com.chords.chordsquare;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,6 +15,7 @@ public class SongService {
     @Autowired
     SongRepository songRepository;
 
+    //TODO: Decide between textToSongPosition() and textToSongPlain()
     public boolean newSong(Map<String, String> map){
         if(map == null){
             throw new IllegalArgumentException("Argument must not be null");
@@ -27,7 +26,7 @@ public class SongService {
         }
         Song song = new Song();
         if(map.get("text") != null){
-            song = textConverter.textToSong(map.get("text"));
+            song = textConverter.textToSongPosition(map.get("text"));
         }
         if(map.get("name") != null){
             song.setName(map.get("name"));
