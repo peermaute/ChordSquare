@@ -1,7 +1,7 @@
 package com.chords.chordsquare;
 
 import com.chords.chordsquare.music.Chord;
-import com.chords.chordsquare.structure.ChordWordPair;
+import com.chords.chordsquare.structure.ChordWordPairPosition;
 import com.chords.chordsquare.structure.Position;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class TestChordWordPair {
+public class TestChordWordPairPosition {
     @Test
     void testToStringListChordNull(){
-        ChordWordPair pair = new ChordWordPair("Test");
+        ChordWordPairPosition pair = new ChordWordPairPosition("Test");
         ArrayList<String> list = pair.toStringList();
         assertEquals(2, list.size());
         assertEquals("    ", list.get(0));
@@ -22,28 +22,28 @@ public class TestChordWordPair {
     }
     @Test
     void testToStringListLongerChord(){
-        ChordWordPair pair = new ChordWordPair("Test", "Gsus4");
+        ChordWordPairPosition pair = new ChordWordPairPosition("Test", "Gsus4");
         ArrayList<String> list = pair.toStringList();
         assertEquals("Gsus4", list.get(0));
         assertEquals("Test ", list.get(1));
     }
     @Test
     void testToStringListLongerWord(){
-        ChordWordPair pair = new ChordWordPair("Test", "G");
+        ChordWordPairPosition pair = new ChordWordPairPosition("Test", "G");
         ArrayList<String> list = pair.toStringList();
         assertEquals("G   ", list.get(0));
         assertEquals("Test", list.get(1));
     }
     @Test
     void testToStringListSameLengthChordWord(){
-        ChordWordPair pair = new ChordWordPair("Test", "Gmaj");
+        ChordWordPairPosition pair = new ChordWordPairPosition("Test", "Gmaj");
         ArrayList<String> list = pair.toStringList();
         assertEquals("Gmaj", list.get(0));
         assertEquals("Test", list.get(1));
     }
     @Test
     void testToStringListWordNull(){
-        ChordWordPair pair = new ChordWordPair();
+        ChordWordPairPosition pair = new ChordWordPairPosition();
         pair.setChord(new Chord("Gsus4"));
         ArrayList<String> list = pair.toStringList();
         assertEquals("Gsus4", list.get(0));
@@ -51,14 +51,14 @@ public class TestChordWordPair {
     }
     @Test
     void testToStringListChordAndWordNull(){
-        ChordWordPair pair = new ChordWordPair();
+        ChordWordPairPosition pair = new ChordWordPairPosition();
         ArrayList<String> list = pair.toStringList();
         assertEquals("", list.get(0));
         assertEquals("", list.get(1));
     }
     @Test
     void testToStringListBefore(){
-        ChordWordPair pair = new ChordWordPair("Test", "Gmaj7");
+        ChordWordPairPosition pair = new ChordWordPairPosition("Test", "Gmaj7");
         pair.setPosition(Position.BEFORE);
         ArrayList<String> list = pair.toStringList();
         assertEquals("Gmaj7    ", list.get(0));
@@ -66,7 +66,7 @@ public class TestChordWordPair {
     }
     @Test
     void testToStringListBeforeShortChord(){
-        ChordWordPair pair = new ChordWordPair("Test", "G");
+        ChordWordPairPosition pair = new ChordWordPairPosition("Test", "G");
         pair.setPosition(Position.BEFORE);
         ArrayList<String> list = pair.toStringList();
         assertEquals("G    ", list.get(0));
@@ -74,7 +74,7 @@ public class TestChordWordPair {
     }
     @Test
     void testToStringListAfter(){
-        ChordWordPair pair = new ChordWordPair("Test", "Gmaj7");
+        ChordWordPairPosition pair = new ChordWordPairPosition("Test", "Gmaj7");
         pair.setPosition(Position.AFTER);
         ArrayList<String> list = pair.toStringList();
         assertEquals("    Gmaj7", list.get(0));
@@ -82,7 +82,7 @@ public class TestChordWordPair {
     }
     @Test
     void testToStringListAfterShortChord(){
-        ChordWordPair pair = new ChordWordPair("Test", "G");
+        ChordWordPairPosition pair = new ChordWordPairPosition("Test", "G");
         pair.setPosition(Position.AFTER);
         ArrayList<String> list = pair.toStringList();
         assertEquals("    G", list.get(0));
@@ -90,7 +90,7 @@ public class TestChordWordPair {
     }
     @Test
     void testToStringListAfterChordNull(){
-        ChordWordPair pair = new ChordWordPair("Test");
+        ChordWordPairPosition pair = new ChordWordPairPosition("Test");
         pair.setPosition(Position.AFTER);
         ArrayList<String> list = pair.toStringList();
         assertEquals("    ", list.get(0));
@@ -98,7 +98,7 @@ public class TestChordWordPair {
     }
     @Test
     void testToStringListBeforeChordNull(){
-        ChordWordPair pair = new ChordWordPair("Test");
+        ChordWordPairPosition pair = new ChordWordPairPosition("Test");
         pair.setPosition(Position.BEFORE);
         ArrayList<String> list = pair.toStringList();
         assertEquals("    ", list.get(0));
@@ -106,7 +106,7 @@ public class TestChordWordPair {
     }
     @Test
     void testToStringListIndexShortChord(){
-        ChordWordPair pair = new ChordWordPair("Test", "G");
+        ChordWordPairPosition pair = new ChordWordPairPosition("Test", "G");
         pair.setIndex(1);
         ArrayList<String> list = pair.toStringList();
         assertEquals(" G  ", list.get(0));
@@ -114,7 +114,7 @@ public class TestChordWordPair {
     }
     @Test
     void testToStringListLongIndex(){
-        ChordWordPair pair = new ChordWordPair("Test", "G");
+        ChordWordPairPosition pair = new ChordWordPairPosition("Test", "G");
         pair.setIndex(6);
         ArrayList<String> list = pair.toStringList();
         assertEquals("      G", list.get(0));
@@ -122,7 +122,7 @@ public class TestChordWordPair {
     }
     @Test
     void testToStringListIndexBefore(){
-        ChordWordPair pair = new ChordWordPair("Test", "G");
+        ChordWordPairPosition pair = new ChordWordPairPosition("Test", "G");
         pair.setIndex(6);
         pair.setPosition(Position.BEFORE);
         ArrayList<String> list = pair.toStringList();
@@ -131,7 +131,7 @@ public class TestChordWordPair {
     }
     @Test
     void testToStringListIndexAfter(){
-        ChordWordPair pair = new ChordWordPair("Test", "G");
+        ChordWordPairPosition pair = new ChordWordPairPosition("Test", "G");
         pair.setIndex(6);
         pair.setPosition(Position.AFTER);
         ArrayList<String> list = pair.toStringList();
@@ -140,7 +140,7 @@ public class TestChordWordPair {
     }
     @Test
     void testToStringListIndexChordNull(){
-        ChordWordPair pair = new ChordWordPair("Test");
+        ChordWordPairPosition pair = new ChordWordPairPosition("Test");
         pair.setIndex(6);
         ArrayList<String> list = pair.toStringList();
         assertEquals("    ", list.get(0));

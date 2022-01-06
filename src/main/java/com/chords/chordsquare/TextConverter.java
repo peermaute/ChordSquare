@@ -2,6 +2,7 @@ package com.chords.chordsquare;
 
 import com.chords.chordsquare.music.Chord;
 import com.chords.chordsquare.structure.ChordWordPair;
+import com.chords.chordsquare.structure.ChordWordPairPosition;
 import com.chords.chordsquare.structure.Position;
 import org.springframework.stereotype.Service;
 
@@ -36,9 +37,9 @@ public class TextConverter {
             ArrayList<ChordWordPair> chordWordLine = new ArrayList<>();
             int counter = 1;
             for(String pair: wordChordPairs){
-                ChordWordPair chordWordPair;
+                ChordWordPairPosition chordWordPair;
                 if(!pair.contains("[")){
-                    chordWordPair = new ChordWordPair(pair);
+                    chordWordPair = new ChordWordPairPosition(pair);
                 }
                 else{
                     int index = pair.indexOf("[");
@@ -51,7 +52,7 @@ public class TextConverter {
                     }
                     Chord chord = new Chord(chordParams[0]);
                     String word = pair.substring(0, index);
-                    chordWordPair = new ChordWordPair(word);
+                    chordWordPair = new ChordWordPairPosition(word);
                     chordWordPair.setChord(chord);
                     if(chordParams.length == 3){
                         chordWordPair.setIndex(Integer.parseInt(chordParams[1]));

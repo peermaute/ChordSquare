@@ -19,13 +19,14 @@ public class Song {
     String text;
 
     ArrayList<ArrayList<ChordWordPair>> staveList;
+
     public Song(){
         staveList = new ArrayList<>();
     }
     public Song(String id, String name, ArrayList<ArrayList<ChordWordPair>> staveList){
         this.id = id;
         this.name = name;
-        this. staveList = staveList;
+        this.staveList = staveList;
     }
     public void higherKey(){
         for(ArrayList<ChordWordPair> pairList: staveList){

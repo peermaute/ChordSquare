@@ -1,8 +1,7 @@
 package com.chords.chordsquare;
 
-import com.chords.chordsquare.structure.ChordWordPair;
+import com.chords.chordsquare.structure.ChordWordPairPosition;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,49 +25,49 @@ public class ChordSquareApplication implements CommandLineRunner {
 
     }
     private void initiate(){
-
+    /*
 
         Song song = new Song();
         song.setName("Happy Birthday");
-        ArrayList<ChordWordPair> stave = new ArrayList<>();
+        ArrayList<ChordWordPairPosition> stave = new ArrayList<>();
 
-        ChordWordPair pair = new ChordWordPair("Happy", "D");
-        ChordWordPair pair2 = new ChordWordPair("Birthday");
-        ChordWordPair pair3 = new ChordWordPair("to");
-        ChordWordPair pair4 = new ChordWordPair("You", "A");
+        ChordWordPairPosition pair = new ChordWordPairPosition("Happy", "D");
+        ChordWordPairPosition pair2 = new ChordWordPairPosition("Birthday");
+        ChordWordPairPosition pair3 = new ChordWordPairPosition("to");
+        ChordWordPairPosition pair4 = new ChordWordPairPosition("You", "A");
         stave.add(pair);
         stave.add(pair2);
         stave.add(pair3);
         stave.add(pair4);
         song.getStaveList().add(stave);
 
-        ArrayList<ChordWordPair> stave2 = new ArrayList<>();
-        ChordWordPair pair5 = new ChordWordPair("Happy");
-        ChordWordPair pair6 = new ChordWordPair("Birthday");
-        ChordWordPair pair7 = new ChordWordPair("to");
-        ChordWordPair pair8 = new ChordWordPair("You", "D");
+        ArrayList<ChordWordPairPosition> stave2 = new ArrayList<>();
+        ChordWordPairPosition pair5 = new ChordWordPairPosition("Happy");
+        ChordWordPairPosition pair6 = new ChordWordPairPosition("Birthday");
+        ChordWordPairPosition pair7 = new ChordWordPairPosition("to");
+        ChordWordPairPosition pair8 = new ChordWordPairPosition("You", "D");
         stave2.add(pair5);
         stave2.add(pair6);
         stave2.add(pair7);
         stave2.add(pair8);
         song.getStaveList().add(stave2);
 
-        ArrayList<ChordWordPair> stave3 = new ArrayList<>();
-        ChordWordPair pair9 = new ChordWordPair("Happy");
-        ChordWordPair pair10 = new ChordWordPair("Birthday");
-        ChordWordPair pair11 = new ChordWordPair("dear");
-        ChordWordPair pair12 = new ChordWordPair("Elsie", "G");
+        ArrayList<ChordWordPairPosition> stave3 = new ArrayList<>();
+        ChordWordPairPosition pair9 = new ChordWordPairPosition("Happy");
+        ChordWordPairPosition pair10 = new ChordWordPairPosition("Birthday");
+        ChordWordPairPosition pair11 = new ChordWordPairPosition("dear");
+        ChordWordPairPosition pair12 = new ChordWordPairPosition("Elsie", "G");
         stave3.add(pair9);
         stave3.add(pair10);
         stave3.add(pair11);
         stave3.add(pair12);
         song.getStaveList().add(stave3);
 
-        ArrayList<ChordWordPair> stave4 = new ArrayList<>();
-        ChordWordPair pair13 = new ChordWordPair("Happy", "D");
-        ChordWordPair pair14 = new ChordWordPair("Birthday");
-        ChordWordPair pair15 = new ChordWordPair("to", "A");
-        ChordWordPair pair16 = new ChordWordPair("You", "D");
+        ArrayList<ChordWordPairPosition> stave4 = new ArrayList<>();
+        ChordWordPairPosition pair13 = new ChordWordPairPosition("Happy", "D");
+        ChordWordPairPosition pair14 = new ChordWordPairPosition("Birthday");
+        ChordWordPairPosition pair15 = new ChordWordPairPosition("to", "A");
+        ChordWordPairPosition pair16 = new ChordWordPairPosition("You", "D");
         stave4.add(pair13);
         stave4.add(pair14);
         stave4.add(pair15);
@@ -95,5 +94,7 @@ public class ChordSquareApplication implements CommandLineRunner {
         optSong.get().higherKey();
         optSong.get().higherKey();
         System.out.println(optSong);
+
+     */
     }
 }
